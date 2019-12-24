@@ -13,3 +13,4 @@ use App\Http\Controllers\personController;
 
 */
 Route::get('/person/{person}','personController@show');
+Route::apiResource('/person', 'personController');
