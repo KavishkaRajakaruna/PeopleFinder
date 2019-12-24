@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use  App\person;
+use App\Http\Controllers\personController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,6 +12,4 @@ use  App\person;
 | is assigned the "api" middleware group. Enjoy building your API!;
 
 */
-Route::get('/person/{person}', function (Person $person){
-   return $person;
-});
+Route::get('/person/{person}','personController@show');
