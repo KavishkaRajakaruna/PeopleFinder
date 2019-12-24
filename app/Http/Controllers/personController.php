@@ -26,6 +26,10 @@ class personController extends Controller
         return new personResourceCollection(person::paginate());
     }
 
+    /**
+     * @param Request $request
+     * @return personResource
+     */
     public function store(Request $request)
     {
         $request ->validate([
@@ -37,6 +41,13 @@ class personController extends Controller
         ]);
 
         $person = Person::create($request ->all());
+        return new personResource($person);
+    }
+
+    public function update(Person $person,Request $request):personResource
+    {
+        $person ->update($request ->all());
+
         return new personResource($person);
     }
 }
