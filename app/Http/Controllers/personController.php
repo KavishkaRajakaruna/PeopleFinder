@@ -21,7 +21,22 @@ class personController extends Controller
     /**
      * @return personResourceCollection
      */
-    public function index(): personResourceCollection{
+    public function index(): personResourceCollection
+    {
         return new personResourceCollection(person::paginate());
+    }
+
+    public function store(Request $request)
+    {
+        $request ->validate([
+            'first_name' => 'required',
+            'Last-name' => 'required',
+            'phone' => 'required',
+            'City' => 'required',
+
+        ]);
+
+        $person = Person::create($request ->all());
+        return new personResource($person);
     }
 }
